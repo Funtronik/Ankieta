@@ -18,55 +18,92 @@ namespace Ankieta
         public Form1()
         {
             InitializeComponent();
+
+            using (FileStream fs = File.Create(curFile))
+            {
+                AddText(fs, "X.X.X$X..X$");
+            }
             bool file = File.Exists(curFile);
             if (file)
             {
+                // File.Delete(curFile);
+
                 string pobrane = "";
                 using (StreamReader sr = new StreamReader(curFile))
                 {
                     pobrane = sr.ReadToEnd();
                 }
                 var perPytanie = pobrane.Split('$');
-                for (int i = 1; i < 8; i++)
+                for (int i = 1; i < 2; i++)
+                {
+                    var aktualnePytanie = perPytanie[i - 1].Split('.');
+                    for (int a = 1; a < 4; a++)
                     {
-                    var aktualnePytanie = perPytanie[i-1];
-                        for (int a = 1; a < 4; a++)
+                        var odp = aktualnePytanie[a - 1];
+                        if (odp == "X")
                         {
-                           
+                            changeControl(i.ToString(), a - 1,true);
                         }
-
                     }
+                }
+                File.Delete(curFile);
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (FileStream fs = File.Create(curFile))
-            {
-                AddText(fs, "This is some text");
-                AddText(fs, "This is some more text,");
-                AddText(fs, "\r\nand this is on a new line");
-                AddText(fs, "\r\n\r\nThe following is a subset of characters:\r\n");
 
-                for (int i = 1; i < 120; i++)
-                {
-                    AddText(fs, Convert.ToChar(i).ToString());
-
-                }
-            }
             for (int i = 1; i < 8; i++)
             {
                 for (int a = 0; a < 4; a++)
                 {
 
                 }
-
             }
         }
         private static void AddText(FileStream fs, string value)
         {
             byte[] info = new UTF8Encoding(true).GetBytes(value);
             fs.Write(info, 0, info.Length);
+        }
+        private void changeControl(string control, int value,bool check)
+        {
+            if (control == "1")
+            {
+                checkedListBox1.SetItemChecked(value,check);
+            }
+            if (control == "2")
+            {
+                checkedListBox1.SetItemChecked(value, check);
+            }
+            if (control == "3")
+            {
+                checkedListBox1.SetItemChecked(value, check);
+            }
+            if (control == "4")
+            {
+                checkedListBox1.SetItemChecked(value, check);
+            }
+            if (control == "5")
+            {
+                checkedListBox1.SetItemChecked(value, check);
+            }
+            if (control == "6")
+            {
+                checkedListBox1.SetItemChecked(value, check);
+            }
+            if (control == "7")
+            {
+                checkedListBox1.SetItemChecked(value, check);
+            }
+        }
+
+        private void clearALL()
+        {
+            for (int i = 0; i < 8; i++)
+            {
+
+            }
         }
     }
 }
