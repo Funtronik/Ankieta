@@ -1,0 +1,10 @@
+C:\Users\mjk\Documents\GitHub\Ankieta\Ankieta\bin\Debug\Ankieta.exe.config
+C:\Users\mjk\Documents\GitHub\Ankieta\Ankieta\bin\Debug\Ankieta.exe
+C:\Users\mjk\Documents\GitHub\Ankieta\Ankieta\bin\Debug\Ankieta.pdb
+C:\Users\mjk\Documents\GitHub\Ankieta\Ankieta\obj\Debug\Ankieta.csprojResolveAssemblyReference.cache
+C:\Users\mjk\Documents\GitHub\Ankieta\Ankieta\obj\Debug\Ankieta.Form1.resources
+C:\Users\mjk\Documents\GitHub\Ankieta\Ankieta\obj\Debug\Ankieta.Properties.Resources.resources
+C:\Users\mjk\Documents\GitHub\Ankieta\Ankieta\obj\Debug\Ankieta.csproj.GenerateResource.Cache
+C:\Users\mjk\Documents\GitHub\Ankieta\Ankieta\obj\Debug\Ankieta.csproj.CoreCompileInputs.cache
+C:\Users\mjk\Documents\GitHub\Ankieta\Ankieta\obj\Debug\Ankieta.exe
+C:\Users\mjk\Documents\GitHub\Ankieta\Ankieta\obj\Debug\Ankieta.pdb
