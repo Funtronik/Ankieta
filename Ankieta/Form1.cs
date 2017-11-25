@@ -19,10 +19,6 @@ namespace Ankieta
         {
             InitializeComponent();
 
-            using (FileStream fs = File.Create(curFile))
-            {
-                AddText(fs, "X.X.X$X..X$");
-            }
             bool file = File.Exists(curFile);
             if (file)
             {
@@ -34,7 +30,7 @@ namespace Ankieta
                     pobrane = sr.ReadToEnd();
                 }
                 var perPytanie = pobrane.Split('$');
-                for (int i = 1; i < 2; i++)
+                for (int i = 1; i < 8; i++)
                 {
                     var aktualnePytanie = perPytanie[i - 1].Split('.');
                     for (int a = 1; a < 4; a++)
@@ -46,20 +42,29 @@ namespace Ankieta
                         }
                     }
                 }
-                File.Delete(curFile);
+                //File.Delete(curFile);
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            for (int i = 1; i < 8; i++)
+            using (FileStream fs = File.Create(curFile))
             {
-                for (int a = 0; a < 4; a++)
+                for (int i = 1; i < 8; i++)
                 {
-
+                    for (int a = 0; a < 3; a++)
+                    {
+                        bool zaznacz = getChecked(i.ToString(), a);
+                        if (zaznacz)
+                            if (a != 2) AddText(fs, "X.");
+                            else AddText(fs, "X");
+                        else
+                            if (a != 2)AddText(fs, ".");
+                    }
+                    AddText(fs, "$");
                 }
             }
+            this.Close();
         }
         private static void AddText(FileStream fs, string value)
         {
@@ -74,36 +79,79 @@ namespace Ankieta
             }
             if (control == "2")
             {
-                checkedListBox1.SetItemChecked(value, check);
+                checkedListBox2.SetItemChecked(value, check);
             }
             if (control == "3")
             {
-                checkedListBox1.SetItemChecked(value, check);
+                checkedListBox3.SetItemChecked(value, check);
             }
             if (control == "4")
             {
-                checkedListBox1.SetItemChecked(value, check);
+                checkedListBox4.SetItemChecked(value, check);
             }
             if (control == "5")
             {
-                checkedListBox1.SetItemChecked(value, check);
+                checkedListBox5.SetItemChecked(value, check);
             }
             if (control == "6")
             {
-                checkedListBox1.SetItemChecked(value, check);
+                checkedListBox6.SetItemChecked(value, check);
             }
             if (control == "7")
             {
-                checkedListBox1.SetItemChecked(value, check);
+                checkedListBox7.SetItemChecked(value, check);
             }
+        }
+
+        private bool getChecked(string pyt, int odp)
+        {
+            bool value = false;
+
+            if (pyt == "1")
+            {
+               value = checkedListBox1.GetItemChecked(odp);
+            }
+            if (pyt == "2")
+            {
+                value = checkedListBox2.GetItemChecked(odp);
+            }
+            if (pyt == "3")
+            {
+                value = checkedListBox3.GetItemChecked(odp);
+            }
+            if (pyt == "4")
+            {
+                value = checkedListBox4.GetItemChecked(odp);
+            }
+            if (pyt == "5")
+            {
+                value = checkedListBox5.GetItemChecked(odp);
+            }
+            if (pyt == "6")
+            {
+                value = checkedListBox6.GetItemChecked(odp);
+            }
+            if (pyt == "7")
+            {
+                value = checkedListBox7.GetItemChecked(odp);
+            }
+            return value;
         }
 
         private void clearALL()
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 1; i < 2; i++)
             {
-
+                for (int a = 1; a < 4; a++)
+                {
+                        changeControl(i.ToString(), a - 1, false);
+                }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            clearALL();
         }
     }
 }
